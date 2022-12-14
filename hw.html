@@ -33,19 +33,20 @@
 
             <div class="form-group">
                 <label>Guests</label>
-                <input type="button" class="btn btn-primary" value="+">
+                <input type="button" class="btn btn-primary" value="+" @click="addGuest">
             </div>
             <div class="form-group" v-for="(g,i) in guests">
-                <label>Guest {{i + 1}}</label>
-                <input type="text" class="form-control" v-model.trim="guests[i]">
+                <div @dblclick="removeGuest(i)">
+                    <label>Guest {{i + 1}}</label>
+                    <input type="text" class="form-control" v-model.trim="guests[i].value">
+                </div>
             </div>
             <hr>
 
             <button class="btn btn-success" :disabled="!validateFields">Send Data</button>
         </form>
 
-        <!--        <div v-else>-->
-        <div>
+        <div v-else>
             <h2>All done!</h2>
             <table class="table table-bordered">
                 <tr>
@@ -80,7 +81,7 @@
                 ln: '',
             },
             isSendData: false,
-            guests: ['', '', ''],
+            guests: [],
         }),
 
         computed: {
@@ -88,7 +89,7 @@
                 return `${this.user.fn} ${this.user.ln}`.trim();
             },
             fullGuests() {
-                return this.guests.filter(g => g.length > 0).join(', ');
+                return this.guests.filter(g => g.value.length > 0).map(g => g.value).join(', ');
             },
             validateFields() {
                 return Object.values(this.user).every(f => f.length > 0);
@@ -98,6 +99,12 @@
         methods: {
             sendData() {
                 this.isSendData = true;
+            },
+            addGuest() {
+                this.guests.push({ value: '' });
+            },
+            removeGuest(index) {
+                this.guests = this.guests.filter((_, i) => i !== index);
             },
         },
 
