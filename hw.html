@@ -88,7 +88,7 @@
                 return `${this.user.fn} ${this.user.ln}`.trim();
             },
             fullGuests() {
-                return this.guests.filter(g => g.length > 0);
+                return this.guests.filter(g => g.length > 0).join(', ');
             },
             validateFields() {
                 return Object.values(this.user).every(f => f.length > 0);
