@@ -12,7 +12,7 @@
 
 <div class="wrapper">
     <div class="sample">
-        <form @submit.prevent="sendData" v-if="showData">
+        <form @submit.prevent="sendData" v-if="!isSendData">
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" class="form-control" v-model.trim="user.email">
@@ -79,7 +79,7 @@
                 fn: '',
                 ln: '',
             },
-            showData: true,
+            isSendData: false,
         }),
 
         computed: {
@@ -93,7 +93,7 @@
 
         methods: {
             sendData() {
-                this.showData = false;
+                this.isSendData = true;
             },
         },
 
