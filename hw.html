@@ -12,7 +12,7 @@
 
 <div class="wrapper">
     <div class="sample">
-        <form>
+        <form @submit.prevent="sendData" v-if="showData">
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" class="form-control" v-model.trim="user.email">
@@ -43,7 +43,7 @@
             <button class="btn btn-success" :disabled="!validateFields">Send Data</button>
         </form>
 
-        <div>
+        <div v-else>
             <h2>All done!</h2>
             <table class="table table-bordered">
                 <tr>
@@ -79,7 +79,7 @@
                 fn: '',
                 ln: '',
             },
-            // disSendData: true,
+            showData: true,
         }),
 
         computed: {
@@ -88,6 +88,12 @@
             },
             validateFields() {
                 return Object.values(this.user).every(f => f.length > 0);
+            },
+        },
+
+        methods: {
+            sendData() {
+                this.showData = false;
             },
         },
 
