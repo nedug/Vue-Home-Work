@@ -18,7 +18,7 @@
 <body>
 <div class="wrapper">
     <div class="sample">
-        <form>
+        <form v-if="!isSendData" @submit.prevent="sendData">
             <div class="content alert alert-info" @scroll="scrollText" ref="content">
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
@@ -72,7 +72,7 @@
             </div>
         </form>
 
-        <div>
+        <div v-else>
             <table class="table table-bordered">
                 <tr>
                     <td>Agree all</td>
@@ -98,6 +98,7 @@
             isAgree: false,
             isGetSpam: false,
             typeSpam: 'Phone',
+            isSendData: false,
         }),
 
         computed: {
@@ -126,6 +127,9 @@
                     this.scrollDown = true;
                 }
                 // console.log(contentScrollHeight);
+            },
+            sendData() {
+                this.isSendData = true;
             },
 
         },
