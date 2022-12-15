@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link href="css/styles.css" rel="stylesheet">
     <style>
         .content {
             height: 300px;
             overflow: auto;
         }
-
         .progress {
             height: 15px;
             background-color: lightseagreen;
@@ -145,9 +143,6 @@
                 }
 
                 this.scrollPercent = Math.floor(contentScroll / (contentScrollHeight - contentHeight) * 100);
-
-                // console.log(Math.floor((contentHeight + contentScroll) / contentScrollHeight * 100));
-                // console.log(Math.floor((contentHeight)));
             },
 
             sendData() {
