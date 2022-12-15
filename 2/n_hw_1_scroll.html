@@ -47,7 +47,7 @@
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
             </div>
 
-            <div class="progress" :style="{width: scrollPercent + '%'}"></div>
+            <div class="progress" :style="{width: scrollProgress + '%'}"></div>
 
             <div v-if="scrollDown">
                 <div class="form-check">
@@ -106,7 +106,7 @@
             isGetSpam: false,
             typeSpam: 'Phone',
             isSendData: false,
-            scrollPercent: 0,
+            scrollProgress: 0,
         }),
 
         computed: {
@@ -124,13 +124,13 @@
             },
         },
 
-        watch: {
-            scrollPercent(newPer, oldPer) {
-                if (newPer < oldPer) {
-                    this.scrollPercent = oldPer;
-                }
-            },
-        },
+        // watch: {
+        //     scrollPercent(newPer, oldPer) {
+        //         if (newPer < oldPer) {
+        //             this.scrollPercent = oldPer;
+        //         }
+        //     },
+        // },
 
         methods: {
             scrollText() {
@@ -143,7 +143,11 @@
                     this.scrollDown = true;
                 }
 
-                this.scrollPercent = Math.floor(contentScroll / (contentScrollHeight - contentHeight) * 100);
+                const scroll = Math.floor(contentScroll / (contentScrollHeight - contentHeight) * 100);
+
+                if (scroll > this.scrollProgress) {
+                    this.scrollProgress = scroll;
+                }
             },
             sendData() {
                 this.isSendData = true;
