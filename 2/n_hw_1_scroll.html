@@ -12,6 +12,11 @@
             height: 300px;
             overflow: auto;
         }
+        .progress {
+            width: 30%;
+            /*height: 18px;*/
+            background-color: lightseagreen;
+        }
     </style>
     <script src="js/vue.js"></script>
 </head>
@@ -41,6 +46,8 @@
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
                 <p>This text no one reads. This text no one reads. This text no one reads.</p>
             </div>
+
+            <div class="progress" :style="{width: scrollPercent + '%'}"></div>
 
             <div v-if="scrollDown">
                 <div class="form-check">
@@ -99,6 +106,7 @@
             isGetSpam: false,
             typeSpam: 'Phone',
             isSendData: false,
+            scrollPercent: 0,
         }),
 
         computed: {
