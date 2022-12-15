@@ -54,16 +54,18 @@
                         <input class="form-check-input" type="checkbox" v-model="isGetSpam">
                         Get spam
                     </label>
-
                 </div>
-                <!--				<div class="form-check">-->
-                <!--					<label class="form-check-label">-->
-                <!--						<input class="form-check-input" type="radio"> -->
-                <!--						2-->
-                <!--					</label>-->
-                <!--				</div>-->
+                <div class="form-check" v-if="isGetSpam">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" value="Email" v-model="typeSpam">
+                        Email
+                    </label> <br>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" value="Phone" v-model="typeSpam">
+                        Phone
+                    </label>
+                </div>
                 <hr>
-
                 <button class="btn btn-primary" :disabled="!isAgree">
                     Send Data
                 </button>
@@ -80,9 +82,9 @@
                     <td>Get Spam</td>
                     <td :class="colorSpam">{{statusSpam}}</td>
                 </tr>
-                <tr>
+                <tr v-if="isGetSpam">
                     <td>Type of Spam</td>
-                    <td>Email</td>
+                    <td>{{typeSpam}}</td>
                 </tr>
             </table>
         </div>
@@ -95,6 +97,7 @@
             scrollDown: false,
             isAgree: false,
             isGetSpam: false,
+            typeSpam: 'Phone',
         }),
 
         computed: {
