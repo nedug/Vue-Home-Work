@@ -99,22 +99,22 @@
 </div>
 <script>
 
-    const AppSpanTD = {
-        props: ['value'],
-        computed: {
-            textStatus() {
-                return this.value ? 'Yes' : 'No';
-            },
-            classColor() {
-                return this.value ? 'text-success' : 'text-danger';
-            },
-        },
-        template: '<span :class="classColor">{{textStatus}}</span>',
-    };
+    // const AppSpanTD = {
+    //     props: ['value'],
+    //     computed: {
+    //         textStatus() {
+    //             return this.value ? 'Yes' : 'No';
+    //         },
+    //         classColor() {
+    //             return this.value ? 'text-success' : 'text-danger';
+    //         },
+    //     },
+    //     template: '<span :class="classColor">{{textStatus}}</span>',
+    // };
 
-    
+
     Vue.createApp({
-        components: { AppSpanTD },
+        // components: { AppSpanTD },
         data: () => ({
             scrollDown: false,
             isAgree: false,
