@@ -12,10 +12,11 @@
             height: 300px;
             overflow: auto;
         }
+
         .progress {
-            width: 30%;
-            /*height: 18px;*/
+            height: 15px;
             background-color: lightseagreen;
+            margin-bottom: 10px;
         }
     </style>
     <script src="js/vue.js"></script>
@@ -124,18 +125,31 @@
             },
         },
 
+        watch: {
+            scrollPercent(newPer, oldPer) {
+                if (newPer < oldPer) {
+                    this.scrollPercent = oldPer;
+                }
+            },
+        },
+
         methods: {
             scrollText() {
                 const content = this.$refs;
                 const contentScrollHeight = content.content.scrollHeight;
-                const contentHeight = content.content.scrollTop;
-                const contentScroll = content.content.offsetHeight;
+                const contentScroll = content.content.scrollTop;
+                const contentHeight = content.content.offsetHeight;
 
                 if (contentHeight + contentScroll >= contentScrollHeight) {
                     this.scrollDown = true;
                 }
-                // console.log(contentScrollHeight);
+
+                this.scrollPercent = Math.floor(contentScroll / (contentScrollHeight - contentHeight) * 100);
+
+                // console.log(Math.floor((contentHeight + contentScroll) / contentScrollHeight * 100));
+                // console.log(Math.floor((contentHeight)));
             },
+
             sendData() {
                 this.isSendData = true;
             },
