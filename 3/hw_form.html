@@ -79,11 +79,31 @@
             ],
         }),
         methods: {
-            onInput(index, val)
-            {
+            onInput(index, val) {
 
-                
-                // console.log(e.target);
+                const field = this.info[index];
+                field.value = val.trim();
+                field.activated = true;
+                field.valid = field.pattern.test(field.value); // Валидация
+
+
+
+
+                // const isValidate = val.match(this.info[index].pattern);
+                //
+                // console.log(this.info[index].pattern.test(this.info[index].value));
+                //
+                // this.info = isValidate
+                //     ? this.info.map((el, i) => index === i ? { ...el, value: val, activated: true, valid: true } : el)
+                //     : this.info.map((el, i) => index === i ? { ...el, value: val, activated: true, valid: false } : el);
+
+
+                // console.log(!!result);
+
+
+                // this.info = this.info.map((el, i) => index === i ? { ...el, value: val } : null )
+                // this.info.map((el, i) => console.log(el.value) )
+                // console.log(this.info);
                 // console.log(e.target);
             },
         },
