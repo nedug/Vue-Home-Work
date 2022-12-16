@@ -24,7 +24,6 @@
                            :valid='field.valid'
                            @change-input="onInput(i, $event)" />
             </div>
-
             <button class="btn btn-primary">Send Data</button>
         </form>
 
@@ -43,7 +42,12 @@
 <script>
 
     const AppField = {
-        props: ['label', 'value', 'activated', 'valid'],
+        props: {
+            label: { type: String, required: true },
+            value: { type: String, required: true },
+            activated: { type: Boolean, default: false },
+            valid: { type: Boolean, default: false },
+        },
 
         methods: {
             onInput(e) {
