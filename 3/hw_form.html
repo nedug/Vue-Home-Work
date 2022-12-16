@@ -24,7 +24,7 @@
                            :valid='field.valid'
                            @change-input="onInput(i, $event)" />
             </div>
-            <button class="btn btn-primary">Send Data</button>
+            <button class="btn btn-primary" :disabled="!validate">Send Data</button>
         </form>
 
         <pre>{{ info }}</pre>
@@ -101,6 +101,7 @@
                 },
             ],
             statusProgress: 0,
+            validate: false,
         }),
 
         computed: {
@@ -126,6 +127,8 @@
                 field.valid = field.pattern.test(field.value); // Валидация
 
                 this.statusProgress = this.updateProgress;
+
+                this.validate = this.statusProgress >= 100;
             },
         },
         created() {
