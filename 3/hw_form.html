@@ -12,7 +12,7 @@
 <body>
 <div class="wrapper">
     <div class="sample">
-        <form>
+        <form v-if="!isSendData" @submit.prevent="sendData">
             <div class="progress mb-2">
                 <div class="progress-bar" :style="showProgress"></div>
             </div>
@@ -26,14 +26,12 @@
             </div>
             <button class="btn btn-primary" :disabled="!validate">Send Data</button>
         </form>
-
-        <pre>{{ info }}</pre>
-
-        <div>
+<!--        <pre>{{ info }}</pre>-->
+        <div v-else>
             <table class="table table-bordered">
-                <tr>
-                    <td></td>
-                    <td></td>
+                <tr v-for="field in info">
+                    <td>{{field.label}}</td>
+                    <td>{{field.value}}</td>
                 </tr>
             </table>
         </div>
@@ -76,32 +74,33 @@
             info: [
                 {
                     label: 'Name',
-                    value: 'SS',
+                    value: 'S',
                     pattern: /^[a-zA-Z ]{2,30}$/,
                 },
                 {
                     label: 'Phone',
-                    value: '55',
+                    value: '552525255',
                     pattern: /^[0-9]{7,14}$/,
                 },
                 {
                     label: 'Email',
-                    value: '',
+                    value: 'test',
                     pattern: /.+/,
                 },
                 {
                     label: 'Some Field 1',
-                    value: '',
+                    value: 'test',
                     pattern: /.+/,
                 },
                 {
                     label: 'Some Field 2',
-                    value: '',
+                    value: 'test',
                     pattern: /.+/,
                 },
             ],
             statusProgress: 0,
             validate: false,
+            isSendData: false,
         }),
 
         computed: {
@@ -129,6 +128,9 @@
                 this.statusProgress = this.updateProgress;
 
                 this.validate = this.statusProgress >= 100;
+            },
+            sendData() {
+                this.isSendData = true;
             },
         },
         created() {
