@@ -26,7 +26,7 @@
                         ></span>
                     </label>
 
-                    <input type="text" class="form-control" :value="field.value" @input="onInput(i)">
+                    <input type="text" class="form-control" :value="field.value" @input="onInput(i, $event.target.value)">
                 </div>
 
             </div>
@@ -79,10 +79,12 @@
             ],
         }),
         methods: {
-            onInput(i, e) {
+            onInput(index, val)
+            {
 
-                console.log(val);
-
+                
+                // console.log(e.target);
+                // console.log(e.target);
             },
         },
         created() {
