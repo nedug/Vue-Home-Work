@@ -154,7 +154,9 @@
         // },
 
         methods: {
-            scrollText() {
+            scrollText(e) {
+                console.log(e.target);
+
                 const content = this.$refs;
                 const contentScrollHeight = content.content.scrollHeight;
                 const contentScroll = content.content.scrollTop;

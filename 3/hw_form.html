@@ -25,11 +25,12 @@
                               :class="field.valid ? 'fa fa-check-circle text-success' : 'fa fa-exclamation-circle text-danger'"
                         ></span>
                     </label>
-                    <input type="text" class="form-control" :value="field.value" @input="onInput(i, $event.target.value)">
+
+                    <input type="text" class="form-control" :value="field.value" @input="onInput(i)">
                 </div>
 
             </div>
-            
+
             <button class="btn btn-primary">Send Data</button>
         </form>
 
@@ -78,11 +79,10 @@
             ],
         }),
         methods: {
-            onInput(i, val) {
-                let field = this.info[i];
-                field.value = val.trim();
-                field.activated = true;
-                field.valid = field.pattern.test(field.value);
+            onInput(i, e) {
+
+                console.log(val);
+
             },
         },
         created() {
