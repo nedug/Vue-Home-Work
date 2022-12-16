@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link href="css/styles.css" rel="stylesheet">
+    <style>
+        /*.progress {*/
+        /*    height: 15px;*/
+        /*    background-color: lightseagreen;*/
+        /*    margin-bottom: 10px;*/
+        /*}*/
+    </style>
     <script src="js/vue.js"></script>
 </head>
 <body>
 <div class="wrapper">
     <div class="sample">
         <form>
-            <div class="progress">
-                <div class="progress-bar"></div>
+            <div class="progress mb-2">
+                <div class="progress-bar" :style="showProgress"></div>
             </div>
             <div>
                 <app-field v-for="(field, i) in info"
@@ -100,7 +107,22 @@
                     pattern: /.+/,
                 },
             ],
+            statusProgress: 0,
         }),
+
+        computed: {
+            updateProgress() {
+                const validate = this.info.filter(f => f.valid).length;
+                if (validate) {
+                    return validate * 100 / this.info.length;
+                } else {
+                    return 0;
+                }
+            },
+            showProgress() {
+                return { width: this.statusProgress + '%' };
+            },
+        },
 
         methods: {
             onInput(index, val) {
@@ -109,6 +131,8 @@
                 field.value = val.trim();
                 field.activated = true;
                 field.valid = field.pattern.test(field.value); // Валидация
+
+                this.statusProgress = this.updateProgress;
             },
         },
         created() {
