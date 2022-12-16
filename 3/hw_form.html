@@ -81,7 +81,7 @@
                 },
                 {
                     label: 'Phone',
-                    value: '',
+                    value: '55',
                     pattern: /^[0-9]{7,14}$/,
                 },
                 {
@@ -112,9 +112,13 @@
             },
         },
         created() {
-            this.info.forEach(field => {
+            this.info.forEach((field, i) => {
                 field.valid = false;
                 field.activated = false;
+
+                if (field.value !== '') {
+                    this.onInput(i, field.value);
+                }
             });
         },
     }).mount('.sample');
