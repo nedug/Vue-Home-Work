@@ -83,11 +83,17 @@
             <table class="table table-bordered">
                 <tr>
                     <td>Agree all</td>
-                    <td :class="colorAgree">{{statusAgree}}</td>
+                    <!--                    <td :class="colorAgree">{{statusAgree}}</td>-->
+                    <td>
+                        <app-span-status :value="isAgree" />
+                    </td>
                 </tr>
                 <tr>
                     <td>Get Spam</td>
-                    <td :class="colorSpam">{{statusSpam}}</td>
+                    <!--                    <td :class="colorSpam">{{statusSpam}}</td>-->
+                    <td>
+                        <app-span-status :value="isGetSpam" />
+                    </td>
                 </tr>
                 <tr v-if="isGetSpam">
                     <td>Type of Spam</td>
@@ -99,22 +105,22 @@
 </div>
 <script>
 
-    // const AppSpanTD = {
-    //     props: ['value'],
-    //     computed: {
-    //         textStatus() {
-    //             return this.value ? 'Yes' : 'No';
-    //         },
-    //         classColor() {
-    //             return this.value ? 'text-success' : 'text-danger';
-    //         },
-    //     },
-    //     template: '<span :class="classColor">{{textStatus}}</span>',
-    // };
+    const AppSpanStatus = {
+        props: ['value'],
+        computed: {
+            textStatus() {
+                return this.value ? 'Yes' : 'No';
+            },
+            classColor() {
+                return this.value ? 'text-success' : 'text-danger';
+            },
+        },
+        template: '<span :class="classColor">{{textStatus}}</span>',
+    };
 
 
     Vue.createApp({
-        // components: { AppSpanTD },
+        components: { AppSpanStatus },
         data: () => ({
             scrollDown: false,
             isAgree: false,
