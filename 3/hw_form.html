@@ -22,22 +22,11 @@
                            :value='field.value'
                            :activated='field.activated'
                            :valid='field.valid'
-                           @change-input="onInput(i, $event.value)" />
-
-                <!--                <div class="form-group" v-for="(field,i) in info">-->
-                <!--                    <label>-->
-                <!--                        {{ field.label }}-->
-                <!--                        <span v-if="field.activated"-->
-                <!--                              :class="field.valid ? 'fa fa-check-circle text-success' : 'fa fa-exclamation-circle text-danger'"-->
-                <!--                        ></span>-->
-                <!--                    </label>-->
-                <!--                    <input type="text" class="form-control" :value="field.value" @input="onInput(i, $event.target.value)">-->
-                <!--                </div>-->
+                           @change-input="onInput(i, $event)" />
             </div>
 
             <button class="btn btn-primary">Send Data</button>
         </form>
-
 
         <pre>{{ info }}</pre>
 
@@ -56,25 +45,12 @@
     const AppField = {
         props: ['label', 'value', 'activated', 'valid'],
 
-        data: () => ({
-            valueInput: ''
-        }),
-
-        computed: {
-            // textStatus() {
-            //     return this.value ? 'Yes' : 'No';
-            // },
-            // classColor() {
-            //     return this.value ? 'text-success' : 'text-danger';
-            // },
-        },
-
         methods: {
-            onInput() {
-                // console.log('ребенок');
-                this.$emit('change-input', {value: this.value });
+            onInput(e) {
+                this.$emit('change-input', e.target.value);
             },
         },
+
         template: `
            <div class="form-group">
            <label>
@@ -84,7 +60,7 @@
               ></span>
            </label>
 
-           <input type="text" class="form-control" :value="this.valueInput" @input="onInput">
+           <input type="text" class="form-control" :value="this.value" @input="onInput">
            </div>`,
     };
 
@@ -124,9 +100,6 @@
 
         methods: {
             onInput(index, val) {
-
-                console.log(val);
-
                 const field = this.info[index];
 
                 field.value = val.trim();
