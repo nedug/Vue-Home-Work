@@ -1,27 +1,29 @@
 <template>
-   <div class="sample">
-      <form v-if="!isSendData" @submit.prevent="sendData">
-         <div class="progress mb-2">
-            <div class="progress-bar" :style="showProgress"></div>
+   <div class="wrapper">
+      <div class="sample">
+         <form v-if="!isSendData" @submit.prevent="sendData">
+            <div class="progress mb-2">
+               <div class="progress-bar" :style="showProgress"></div>
+            </div>
+            <div>
+               <app-field v-for="(field, i) in info"
+                          :label="field.label"
+                          :value='field.value'
+                          :activated='field.activated'
+                          :valid='field.valid'
+                          @change-input="onInput(i, $event)" />
+            </div>
+            <button class="btn btn-primary" :disabled="!validate">Send Data</button>
+         </form>
+         <!--        <pre>{{ info }}</pre>-->
+         <div v-else>
+            <table class="table table-bordered">
+               <tr v-for="field in info">
+                  <td>{{ field.label }}</td>
+                  <td>{{ field.value }}</td>
+               </tr>
+            </table>
          </div>
-         <div>
-            <app-field v-for="(field, i) in info"
-                       :label="field.label"
-                       :value='field.value'
-                       :activated='field.activated'
-                       :valid='field.valid'
-                       @change-input="onInput(i, $event)" />
-         </div>
-         <button class="btn btn-primary" :disabled="!validate">Send Data</button>
-      </form>
-      <!--        <pre>{{ info }}</pre>-->
-      <div v-else>
-         <table class="table table-bordered">
-            <tr v-for="field in info">
-               <td>{{field.label}}</td>
-               <td>{{field.value}}</td>
-            </tr>
-         </table>
       </div>
    </div>
 </template>
@@ -32,7 +34,7 @@ import AppField from './components/AppField';
 
 export default {
    name: 'App',
-   components: { AppField, },
+   components: { AppField },
 
    data: () => ({
       info: [
@@ -112,4 +114,8 @@ export default {
 </script>
 
 <style>
+.wrapper {
+   padding: 15px;
+   max-width: 900px;
+}
 </style>
