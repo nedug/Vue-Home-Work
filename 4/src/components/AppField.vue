@@ -1,13 +1,14 @@
 <template>
    <div class="form-group">
-      <label>
-         {{ this.label }}
-         <span v-if="this.activated"
-               :class="this.valid ? 'fa fa-check-circle text-success' : 'fa fa-exclamation-circle text-danger'"
-         ></span>
+      <label class="m-1">
+         {{ label }}
+         <template v-if="activated">
+            <font-awesome-icon icon="fa-solid fa-check-circle" class="text-success" v-if="valid"/>
+            <font-awesome-icon icon="fa-solid fa-exclamation-circle" class="text-danger" v-else/>
+         </template>
       </label>
 
-      <input type="text" class="form-control" :value="this.value" @input="onInput">
+      <input type="text" class="form-control" :value="value" @input="onInput">
    </div>
 </template>
 

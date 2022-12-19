@@ -13,7 +13,7 @@
                           :valid='field.valid'
                           @change-input="onInput(i, $event)" />
             </div>
-            <button class="btn btn-primary" :disabled="!validate">Send Data</button>
+            <button class="btn btn-primary mt-3" :disabled="!validate">Send Data</button>
          </form>
          <!--        <pre>{{ info }}</pre>-->
          <div v-else>
@@ -26,6 +26,7 @@
          </div>
       </div>
    </div>
+
 </template>
 
 <script>
@@ -40,7 +41,7 @@ export default {
       info: [
          {
             label: 'Name',
-            value: 'S',
+            value: '',
             pattern: /^[a-zA-Z ]{2,30}$/,
          },
          {
