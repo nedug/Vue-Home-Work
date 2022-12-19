@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library } from '@fortawesome/fontawesome-svg-core'; // Берем с доки
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -12,7 +12,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons to the library */
-library.add(faCheckCircle, faExclamationCircle);
+library.add(faCheckCircle, faExclamationCircle); // Добавляем нужные иконки
 
 
 createApp(App)
