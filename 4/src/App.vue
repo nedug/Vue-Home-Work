@@ -23,17 +23,22 @@
       </div>
    </div>
 
-   <custom-modal v-model="showModal" @confirm="confirm" @cancel="cancel">
-      <template v-slot:title>Check data</template>
-      <table class="table table-bordered">
-         <tbody>
+<!--   <transition-->
+<!--       name="fade" v-if="showModal" mode="out-in">-->
+
+      <custom-modal v-model="showModal" @confirm="confirm" @cancel="cancel"
+      >
+         <template v-slot:title>Check data</template>
+         <table class="table table-bordered">
+            <tbody>
             <tr v-for="(field, i) in info" :key="i">
                <td>{{ field.label }}</td>
                <td>{{ field.value }}</td>
             </tr>
-         </tbody>
-      </table>
-   </custom-modal>
+            </tbody>
+         </table>
+      </custom-modal>
+<!--   </transition>-->
 
 </template>
 
@@ -135,5 +140,30 @@ export default {
 .wrapper {
    padding: 15px;
    max-width: 900px;
+}
+.fade-enter-active {
+   animation: iconIn .3s;
+}
+
+.fade-leave-active {
+   animation: iconOut .3s;
+}
+
+@keyframes iconIn {
+   from {
+      transform: translateY(-100px);
+   }
+   to {
+      transform: translateY(0);
+   }
+}
+
+@keyframes iconOut {
+   from {
+      transform: translateY(0)
+   }
+   to {
+      transform: translateY(100px);
+   }
 }
 </style>

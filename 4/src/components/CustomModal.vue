@@ -1,25 +1,45 @@
 <template>
-   <vue-final-modal v-slot="{ params, close }" v-bind="$attrs" classes="modal-container" content-class="modal-content">
-    <span class="modal__title">
+
+   <vue-final-modal
+       v-slot="{ params, close }"
+       v-bind="$attrs"
+       classes="modal-container"
+       content-class="modal-content"
+       :transition="{
+      'enter-active-class': 'transition duration-700 ease-in-out transform',
+      'enter-from-class': 'translate-y-full',
+      'enter-to-class': 'translate-y-0',
+      'leave-active-class': 'transition duration-700 ease-in-out transform',
+      'leave-to-class': 'translate-y-full',
+      'leave-from-class': 'translate-y-0'
+    }"
+   >
+      <span class="modal__title">
       <slot name="title"></slot>
     </span>
+
       <div class="modal__content">
          <slot :params="params"></slot>
       </div>
       <div class="modal__action">
          <button
              class="btn btn-success m-1"
-             @click="$emit('confirm', close)">Confirm</button>
+             @click="$emit('confirm', close)">Confirm
+         </button>
          <button
              class="btn btn-dark m-1"
-             @click="$emit('cancel', close)">Cancel</button>
+             @click="$emit('cancel', close)">Cancel
+         </button>
       </div>
       <button class="modal__close btn btn-close" @click="close"></button>
    </vue-final-modal>
+
+
 </template>
 
 <script>
-import {VueFinalModal } from 'vue-final-modal';
+import { VueFinalModal } from 'vue-final-modal';
+
 
 export default {
    name: 'CustomModal',
@@ -30,16 +50,19 @@ export default {
 </script>
 
 <style scoped>
+
+
 ::v-deep(.modal-container) {
    display: flex;
    justify-content: center;
    align-items: center;
 }
+
 ::v-deep(.modal-content) {
    position: relative;
    display: flex;
    flex-direction: column;
-   max-height: 90%;
+   /*max-height: 90%;*/
    max-width: 60%;
    margin: 0 1rem;
    padding: 1rem;
@@ -47,15 +70,18 @@ export default {
    border-radius: 0.25rem;
    background: #fff;
 }
+
 .modal__title {
    margin: 0 2rem 0 0;
    font-size: 1.5rem;
    font-weight: 700;
 }
+
 .modal__content {
    flex-grow: 1;
    overflow-y: auto;
 }
+
 .modal__action {
    display: flex;
    justify-content: center;
@@ -63,6 +89,7 @@ export default {
    flex-shrink: 0;
    padding: 1rem 0 0;
 }
+
 .modal__close {
    position: absolute;
    top: 0.5rem;
@@ -75,5 +102,32 @@ export default {
 .dark-mode div ::v-deep(.modal-content) {
    border-color: #2d3748;
    background-color: #1a202c;
+}
+
+
+.fade-enter-active {
+   animation: iconIn .3s;
+}
+
+.fade-leave-active {
+   animation: iconOut .3s;
+}
+
+@keyframes iconIn {
+   from {
+      transform: translateY(-100px);
+   }
+   to {
+      transform: translateY(0);
+   }
+}
+
+@keyframes iconOut {
+   from {
+      transform: translateY(0)
+   }
+   to {
+      transform: translateY(100px);
+   }
 }
 </style>
