@@ -6,7 +6,7 @@
                <div class="progress-bar" :style="showProgress"></div>
             </div>
             <div>
-               <app-field v-for="(field, i) in info"
+               <field v-for="(field, i) in info"
                           :label="field.label"
                           :value='field.value'
                           :activated='field.activated'
@@ -30,12 +30,12 @@
 </template>
 
 <script>
-import AppField from './components/AppField';
+import Field from './components/Field';
 
 
 export default {
    name: 'App',
-   components: { AppField },
+   components: { Field },
 
    data: () => ({
       info: [
