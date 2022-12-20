@@ -1,17 +1,18 @@
 <template>
    <div class="wrapper">
       <div class="sample">
-         <form v-if="!isSendData" @submit.prevent="sendData">
+         <!--         <form v-if="!isSendData" @submit.prevent="sendData">-->
+         <form v-if="!isSendData" @submit.prevent="showModal = true">
             <div class="progress mb-2">
                <div class="progress-bar" :style="showProgress"></div>
             </div>
             <div>
                <field v-for="(field, i) in info"
-                          :label="field.label"
-                          :value='field.value'
-                          :activated='field.activated'
-                          :valid='field.valid'
-                          @change-input="onInput(i, $event)" />
+                      :label="field.label"
+                      :value='field.value'
+                      :activated='field.activated'
+                      :valid='field.valid'
+                      @change-input="onInput(i, $event)" />
             </div>
             <button class="btn btn-primary mt-3" :disabled="!validate">Send Data</button>
          </form>
@@ -27,17 +28,28 @@
       </div>
    </div>
 
+
+   <custom-modal v-model="showModal" @confirm="confirm" @cancel="cancel">
+
+      <template v-slot:title>Hello, vue-final-modal</template>
+      <p>Vue Final Modal is a renderless, stackable, detachable and lightweight modal component.</p>
+
+   </custom-modal>
+
+
 </template>
 
 <script>
 import Field from './components/Field';
+import CustomModal from '@/components/CustomModal';
 
 
 export default {
    name: 'App',
-   components: { Field },
+   components: { Field, CustomModal },
 
    data: () => ({
+      showModal: false,
       info: [
          {
             label: 'Name',
@@ -98,6 +110,14 @@ export default {
       },
       sendData() {
          this.isSendData = true;
+      },
+      confirm() {
+         // some code...
+         this.show = false;
+      },
+      cancel(close) {
+         // some code...
+         close();
       },
    },
 
