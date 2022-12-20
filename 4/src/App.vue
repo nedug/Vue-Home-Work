@@ -39,7 +39,7 @@
 
       <table class="table table-bordered">
          <tbody>
-            <tr v-for="field in info">
+            <tr v-for="(field, i) in info" :key="i">
                <td>{{ field.label }}</td>
                <td>{{ field.value }}</td>
             </tr>
