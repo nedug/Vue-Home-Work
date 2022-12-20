@@ -18,12 +18,14 @@
          </form>
          <!--        <pre>{{ info }}</pre>-->
          <div v-else>
-            <table class="table table-bordered">
-               <tr v-for="field in info">
-                  <td>{{ field.label }}</td>
-                  <td>{{ field.value }}</td>
-               </tr>
-            </table>
+<!--            <table class="table table-bordered">-->
+<!--               <tr v-for="field in info">-->
+<!--                  <td>{{ field.label }}</td>-->
+<!--                  <td>{{ field.value }}</td>-->
+<!--               </tr>-->
+<!--            </table>-->
+
+            <h1>All Done!</h1>
          </div>
       </div>
    </div>
@@ -31,7 +33,8 @@
 
    <custom-modal v-model="showModal" @confirm="confirm" @cancel="cancel">
 
-      <template v-slot:title>Hello, vue-final-modal</template>
+      <template v-slot:title>Check data</template>
+
       <p>Vue Final Modal is a renderless, stackable, detachable and lightweight modal component.</p>
 
    </custom-modal>
@@ -112,11 +115,10 @@ export default {
          this.isSendData = true;
       },
       confirm() {
-         // some code...
-         this.show = false;
+         this.sendData();
+         this.showModal = false;
       },
       cancel(close) {
-         // some code...
          close();
       },
    },
