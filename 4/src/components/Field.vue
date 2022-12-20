@@ -43,11 +43,11 @@ export default {
 
 <style scoped>
 .fade-enter-active {
-   animation: iconIn .5s;
+   animation: iconIn .3s;
 }
 
 .fade-leave-active {
-   animation: iconOut .5s;
+   animation: iconOut .3s;
 }
 
 .first-appear-class {
