@@ -2,12 +2,15 @@
    <div class="form-group">
       <label class="m-1">
          {{ label }}
-         <transition name="fade">
-            <span v-if="activated">
-               <font-awesome-icon :icon="'circle-' + (valid ? 'check' : 'exclamation')"
-                                  :class="valid ? 'text-success' : 'text-danger'"
-               />
-            </span>
+         <transition name="fade" v-if="activated" mode="out-in" appear appear-class="custom-appear-class">
+<!--            <span v-if="activated">-->
+<!--               <transition name="blink">-->
+                  <font-awesome-icon :icon="'circle-' + (valid ? 'check' : 'exclamation')"
+                                     :class="valid ? 'text-success' : 'text-danger'"
+                                     :key="valid"
+                  />
+<!--               </transition>-->
+<!--            </span>-->
          </transition>
       </label>
 
@@ -33,27 +36,20 @@ export default {
 </script>
 
 <style scoped>
-   .fade-enter-active {
-      animation: fadeIn 1s;
-   }
-   .fade-leave-active {
-      animation: fadeOut 1s;
-   }
+.fade-enter-active {
+   animation: iconIn .5s;
+}
+.fade-leave-active {
+   animation: iconOut .5s;
+}
 
-   @keyframes fadeIn {
-      from {
-         opacity: 0;
-      }
-      to {
-         opacity: 1;
-      }
-   }
-   @keyframes fadeOut {
-      from {
-         opacity: 1;
-      }
-      to {
-         opacity: 0;
-      }
+@keyframes iconIn {
+   from{ transform: rotateY(-90deg); }
+   to{ transform: rotateY(0); }
+}
+
+@keyframes iconOut {
+   from{ transform: rotateY(0); }
+   to{ transform: rotateY(90deg); }
 }
 </style>
