@@ -38,10 +38,13 @@
       <template v-slot:title>Check data</template>
 
       <table class="table table-bordered">
-         <tr v-for="field in info" class="p-2">
-            <td>{{ field.label }}</td>
-            <td>{{ field.value }}</td>
-         </tr>
+         <tbody>
+            <tr v-for="field in info">
+               <td>{{ field.label }}</td>
+               <td>{{ field.value }}</td>
+            </tr>
+         </tbody>
+
       </table>
 
    </custom-modal>
