@@ -16,7 +16,9 @@
             </div>
             <button class="btn btn-primary mt-3" :disabled="!validate">Send Data</button>
          </form>
+         
          <!--        <pre>{{ info }}</pre>-->
+
          <div v-else>
 <!--            <table class="table table-bordered">-->
 <!--               <tr v-for="field in info">-->
