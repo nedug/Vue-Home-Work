@@ -23,11 +23,8 @@
       </div>
    </div>
 
-
    <custom-modal v-model="showModal" @confirm="confirm" @cancel="cancel">
-
       <template v-slot:title>Check data</template>
-
       <table class="table table-bordered">
          <tbody>
             <tr v-for="(field, i) in info" :key="i">
@@ -35,11 +32,8 @@
                <td>{{ field.value }}</td>
             </tr>
          </tbody>
-
       </table>
-
    </custom-modal>
-
 
 </template>
 
