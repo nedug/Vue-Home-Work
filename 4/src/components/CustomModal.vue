@@ -7,12 +7,14 @@
          <slot :params="params"></slot>
       </div>
       <div class="modal__action">
-         <button @click="$emit('confirm', close)">confirm</button>
-         <button @click="$emit('cancel', close)">cancel</button>
+         <button
+             class="btn btn-success m-1"
+             @click="$emit('confirm', close)">Confirm</button>
+         <button
+             class="btn btn-dark m-1"
+             @click="$emit('cancel', close)">Cancel</button>
       </div>
-      <button class="modal__close" @click="close">
-         x
-      </button>
+      <button class="modal__close btn btn-close" @click="close"></button>
    </vue-final-modal>
 </template>
 
@@ -38,6 +40,7 @@ export default {
    display: flex;
    flex-direction: column;
    max-height: 90%;
+   max-width: 60%;
    margin: 0 1rem;
    padding: 1rem;
    border: 1px solid #e2e8f0;
@@ -64,6 +67,7 @@ export default {
    position: absolute;
    top: 0.5rem;
    right: 0.5rem;
+   border-radius: 0.25rem;
 }
 </style>
 
