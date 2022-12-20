@@ -16,16 +16,16 @@
             </div>
             <button class="btn btn-primary mt-3" :disabled="!validate">Send Data</button>
          </form>
-         
+
          <!--        <pre>{{ info }}</pre>-->
 
          <div v-else>
-<!--            <table class="table table-bordered">-->
-<!--               <tr v-for="field in info">-->
-<!--                  <td>{{ field.label }}</td>-->
-<!--                  <td>{{ field.value }}</td>-->
-<!--               </tr>-->
-<!--            </table>-->
+            <!--            <table class="table table-bordered">-->
+            <!--               <tr v-for="field in info">-->
+            <!--                  <td>{{ field.label }}</td>-->
+            <!--                  <td>{{ field.value }}</td>-->
+            <!--               </tr>-->
+            <!--            </table>-->
 
             <h1>All Done!</h1>
          </div>
@@ -37,7 +37,12 @@
 
       <template v-slot:title>Check data</template>
 
-      <p>Vue Final Modal is a renderless, stackable, detachable and lightweight modal component.</p>
+      <table class="table table-bordered">
+         <tr v-for="field in info" class="p-2">
+            <td>{{ field.label }}</td>
+            <td>{{ field.value }}</td>
+         </tr>
+      </table>
 
    </custom-modal>
 
