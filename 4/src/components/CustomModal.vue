@@ -6,14 +6,9 @@
        classes="modal-container"
        content-class="modal-content"
        :transition="{
-      'enter-active-class': 'transition duration-700 ease-in-out transform',
-      'enter-from-class': 'translate-y-full',
-      'enter-to-class': 'translate-y-0',
-      'leave-active-class': 'transition duration-700 ease-in-out transform',
-      'leave-to-class': 'translate-y-full',
-      'leave-from-class': 'translate-y-0'
-    }"
-   >
+      'enter-active-class': 'animate__animated animate__tada',
+      'leave-active-class': 'animate__animated animate__fadeOutLeft',
+    }">
       <span class="modal__title">
       <slot name="title"></slot>
     </span>
@@ -39,6 +34,7 @@
 
 <script>
 import { VueFinalModal } from 'vue-final-modal';
+import '../animate.css';
 
 
 export default {
@@ -102,32 +98,5 @@ export default {
 .dark-mode div ::v-deep(.modal-content) {
    border-color: #2d3748;
    background-color: #1a202c;
-}
-
-
-.fade-enter-active {
-   animation: iconIn .3s;
-}
-
-.fade-leave-active {
-   animation: iconOut .3s;
-}
-
-@keyframes iconIn {
-   from {
-      transform: translateY(-100px);
-   }
-   to {
-      transform: translateY(0);
-   }
-}
-
-@keyframes iconOut {
-   from {
-      transform: translateY(0)
-   }
-   to {
-      transform: translateY(100px);
-   }
 }
 </style>
