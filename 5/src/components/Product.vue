@@ -39,14 +39,15 @@ export default {
 
       setCnt(e) {
 
-         this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
-
-         console.log(+e.target.value);
          console.log(this.cnt);
 
-         if (!+e.target.value) {
-            this.$store.commit('setCnt', this.cnt);
-         }
+         this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
+
+         // console.log(+e.target.value);
+
+         console.log(this.cnt);
+
+
 
          // this.$nextTick(() => {
          //    this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
