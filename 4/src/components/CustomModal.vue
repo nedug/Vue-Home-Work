@@ -6,8 +6,8 @@
        classes="modal-container"
        content-class="modal-content"
        :transition="{
-      'enter-active-class': 'animate__animated animate__tada',
-      'leave-active-class': 'animate__animated animate__fadeOutLeft',
+      'enter-active-class': 'animate__animated animate__fadeInDown',
+      'leave-active-class': 'animate__animated animate__slideOutUp',
     }">
       <span class="modal__title">
       <slot name="title"></slot>
