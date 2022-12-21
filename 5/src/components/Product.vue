@@ -11,7 +11,7 @@
       <button class="btn btn-success" @click="increase">+1</button>
 
       <hr>
-      <button class="btn btn-primary" @click="sendOrder">Send</button>
+      <button class="btn btn-primary" @click="send">Send</button>
 
       <div class="alert alert-warning" v-if="orderIsPending">
          Pending...
@@ -40,7 +40,7 @@ export default {
       },
 
 
-/* ---Используем их через mapActions--- */
+      /* ---Используем их через mapActions--- */
       // increase() {
       //    this.$store.dispatch('increase');
       // },
