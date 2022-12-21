@@ -23,16 +23,16 @@ const store = {
         orderIsDone: state => state.orderStatus == 2,
     },
     mutations: {
-        decrease(state) {
-            if (state.cnt > 1) {
-                state.cnt--;
-            }
-        },
-        increase(state) {
-            state.cnt++;
-        },
+        // decrease(state) {
+        //     if (state.cnt > 1) {
+        //         state.cnt--;
+        //     }
+        // },
+        // increase(state) {
+        //     state.cnt++;
+        // },
         setCnt(state, val) {
-            state.cnt = Math.max(1, val);
+            state.cnt = Math.max(1, state.cnt + val);
         },
         setOrderStatus(state, status) {
             state.orderStatus = status;
@@ -46,6 +46,12 @@ const store = {
             setTimeout(() => {
                 store.commit('setOrderStatus', 2);
             }, 500);
+        },
+        increase(store) {
+            store.commit('setCnt', 1);
+        },
+        decrease(store) {
+            store.commit('setCnt', -1);
         },
     },
     strict: process.env.NODE_ENV !== 'production',

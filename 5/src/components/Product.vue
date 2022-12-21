@@ -30,10 +30,12 @@ export default {
    computed: mapGetters(['price', 'cnt', 'orderIsPending', 'orderIsDone']),
    methods: {
       increase() {
-         this.$store.commit('increase');
+         this.$store.dispatch('increase');
+         // this.$store.commit('increase');
       },
       decrease() {
-         this.$store.commit('decrease');
+         this.$store.dispatch('decrease');
+         // this.$store.commit('decrease');
       },
       setCnt(e) {
          this.$store.commit('setCnt', parseInt(e.target.value));
