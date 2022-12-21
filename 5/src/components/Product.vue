@@ -30,35 +30,23 @@ export default {
    computed: mapGetters(['price', 'cnt', 'orderIsPending', 'orderIsDone']),
    methods: {
       ...mapActions(['send', 'increase', 'decrease']),
+
+      setCnt(e) {
+         console.log(this.cnt);
+
+         this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
+
+         console.log(this.cnt);
+      },
       // increase() {
       //    this.$store.dispatch('increase');
       // },
       // decrease() {
       //    this.$store.dispatch('decrease');
       // },
-
-      setCnt(e) {
-
-         console.log(this.cnt);
-
-         this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
-
-         // console.log(+e.target.value);
-
-         console.log(this.cnt);
-
-
-
-         // this.$nextTick(() => {
-         //    this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
-         // })
-
-         // this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
-         // this.$store.commit('setCnt', parseInt(e.target.value));
-      },
-      sendOrder() {
-         this.$store.dispatch('send');
-      },
+      // sendOrder() {
+      //    this.$store.dispatch('send');
+      // },
    },
 };
 </script>
