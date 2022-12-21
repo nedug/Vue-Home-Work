@@ -32,7 +32,11 @@ const store = {
         //     state.cnt++;
         // },
         setCnt(state, val) {
-            state.cnt = Math.max(1, state.cnt + val);
+            state.cnt = Math.max(1, val);
+
+            // state.cnt = Math.max(1, val > 1 ? val : state.cnt + val)
+            // ? Math.max(1, val)
+            // : Math.max(1, state.cnt + val);
         },
         setOrderStatus(state, status) {
             state.orderStatus = status;
@@ -48,10 +52,16 @@ const store = {
             }, 500);
         },
         increase(store) {
-            store.commit('setCnt', 1);
+            // console.log(store.getters.cnt + 1);
+            store.commit('setCnt', store.getters.cnt + 1);
+            // store.commit('setCnt', 1);
         },
         decrease(store) {
-            store.commit('setCnt', -1);
+            store.commit('setCnt', store.getters.cnt - 1);
+            // store.commit('setCnt', -1);
+        },
+        setInput(store, val) {
+            store.commit('setCnt', val);
         },
     },
     strict: process.env.NODE_ENV !== 'production',

@@ -38,7 +38,11 @@ export default {
          // this.$store.commit('decrease');
       },
       setCnt(e) {
-         this.$store.commit('setCnt', parseInt(e.target.value));
+
+         console.log(parseInt(e.target.value));
+
+         this.$store.dispatch('setInput', parseInt(e.target.value));
+         // this.$store.commit('setCnt', parseInt(e.target.value));
       },
       sendOrder() {
          this.$store.dispatch('send');
