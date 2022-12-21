@@ -3,7 +3,7 @@
       <h2>Product title</h2>
       <div class="price">{{ price }}</div>
       <hr>
-      
+
       <button class="btn btn-warning" @click="decrease">-1</button>
       <input type="text" :value="cnt" @change="setCnt">
       <button class="btn btn-success" @click="increase">+1</button>
