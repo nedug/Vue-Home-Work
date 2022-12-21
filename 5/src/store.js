@@ -11,13 +11,13 @@ import { createStore } from 'vuex';
 const store = {
     state: {
         price: 1000,
-        cnt: 1,
+        cnt: { value: 1 },
         orderStatus: 0,
     },
     getters: {
         price: state => state.price,
-        cnt: state => state.cnt,
-        total: state => state.price * state.cnt,
+        cnt: state => state.cnt.value,
+        total: state => state.price * state.cnt.value,
         orderIsNothing: state => state.orderStatus == 0, // wtf my english
         orderIsPending: state => state.orderStatus == 1,
         orderIsDone: state => state.orderStatus == 2,
@@ -32,7 +32,8 @@ const store = {
         //     state.cnt++;
         // },
         setCnt(state, val) {
-            state.cnt = Math.max(1, val);
+
+            state.cnt = { value: Math.max(1, val) };
 
             // state.cnt = Math.max(1, val > 1 ? val : state.cnt + val)
             // ? Math.max(1, val)
@@ -52,7 +53,6 @@ const store = {
             }, 500);
         },
         increase(store) {
-            // console.log(store.getters.cnt + 1);
             store.commit('setCnt', store.getters.cnt + 1);
             // store.commit('setCnt', 1);
         },

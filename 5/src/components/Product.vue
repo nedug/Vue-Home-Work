@@ -31,17 +31,27 @@ export default {
    methods: {
       increase() {
          this.$store.dispatch('increase');
-         // this.$store.commit('increase');
       },
       decrease() {
          this.$store.dispatch('decrease');
-         // this.$store.commit('decrease');
       },
       setCnt(e) {
 
-         console.log(parseInt(e.target.value));
 
-         this.$store.dispatch('setInput', parseInt(e.target.value));
+         this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
+
+         console.log(+e.target.value);
+         console.log(this.cnt);
+
+         if(!+e.target.value) {
+            this.$store.commit('setCnt', this.cnt);
+         }
+
+         // this.$nextTick(() => {
+         //    this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
+         // })
+
+         // this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
          // this.$store.commit('setCnt', parseInt(e.target.value));
       },
       sendOrder() {
