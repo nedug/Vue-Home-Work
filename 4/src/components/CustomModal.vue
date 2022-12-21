@@ -5,14 +5,10 @@
        v-bind="$attrs"
        classes="modal-container"
        content-class="modal-content"
-       :transition="{
-      'enter-active-class': 'animate__animated animate__fadeInDown',
-      'leave-active-class': 'animate__animated animate__slideOutUp',
-    }">
+   >
       <span class="modal__title">
       <slot name="title"></slot>
     </span>
-
       <div class="modal__content">
          <slot :params="params"></slot>
       </div>
@@ -29,12 +25,10 @@
       <button class="modal__close btn btn-close" @click="close"></button>
    </vue-final-modal>
 
-
 </template>
 
 <script>
 import { VueFinalModal } from 'vue-final-modal';
-import '../animate.css';
 
 
 export default {
