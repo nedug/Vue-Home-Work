@@ -23,27 +23,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 
 export default {
    computed: mapGetters(['price', 'cnt', 'orderIsPending', 'orderIsDone']),
    methods: {
-      increase() {
-         this.$store.dispatch('increase');
-      },
-      decrease() {
-         this.$store.dispatch('decrease');
-      },
-      setCnt(e) {
+      ...mapActions(['send', 'increase', 'decrease']),
+      // increase() {
+      //    this.$store.dispatch('increase');
+      // },
+      // decrease() {
+      //    this.$store.dispatch('decrease');
+      // },
 
+      setCnt(e) {
 
          this.$store.dispatch('setInput', parseInt(e.target.value) || 1);
 
          console.log(+e.target.value);
          console.log(this.cnt);
 
-         if(!+e.target.value) {
+         if (!+e.target.value) {
             this.$store.commit('setCnt', this.cnt);
          }
 
