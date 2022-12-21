@@ -40,7 +40,6 @@ const store = {
             }, 500);
         },
         increase(store) {
-            console.log(store);
             store.commit('setCnt', store.state.cnt.value + 1);
         },
         decrease(store) {
