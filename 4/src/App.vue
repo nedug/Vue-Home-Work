@@ -23,28 +23,31 @@
       </div>
    </div>
 
-<!--   <transition-->
-<!--       name="fade" v-if="showModal" mode="out-in">-->
-
-      <custom-modal v-model="showModal" @confirm="confirm" @cancel="cancel"
-      >
-         <template v-slot:title>Check data</template>
-         <table class="table table-bordered">
-            <tbody>
-            <tr v-for="(field, i) in info" :key="i">
-               <td>{{ field.label }}</td>
-               <td>{{ field.value }}</td>
-            </tr>
-            </tbody>
-         </table>
-      </custom-modal>
-<!--   </transition>-->
+   <custom-modal
+       v-model="showModal"
+       @confirm="confirm"
+       @cancel="cancel"
+       :transition="{
+      'enter-active-class': 'animate__animated animate__fadeInDown',
+      'leave-active-class': 'animate__animated animate__slideOutUp',
+    }">
+      <template v-slot:title>Check data</template>
+      <table class="table table-bordered">
+         <tbody>
+         <tr v-for="(field, i) in info" :key="i">
+            <td>{{ field.label }}</td>
+            <td>{{ field.value }}</td>
+         </tr>
+         </tbody>
+      </table>
+   </custom-modal>
 
 </template>
 
 <script>
 import Field from './components/Field';
 import CustomModal from '@/components/CustomModal';
+import './animate.css';
 
 
 export default {
@@ -141,6 +144,7 @@ export default {
    padding: 15px;
    max-width: 900px;
 }
+
 .fade-enter-active {
    animation: iconIn .3s;
 }
