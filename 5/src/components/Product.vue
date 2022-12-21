@@ -3,13 +3,10 @@
       <h2>Product title</h2>
       <div class="price">{{ price }}</div>
       <hr>
-
+      
       <button class="btn btn-warning" @click="decrease">-1</button>
-
       <input type="text" :value="cnt" @change="setCnt">
-
       <button class="btn btn-success" @click="increase">+1</button>
-
       <hr>
       <button class="btn btn-primary" @click="send">Send</button>
 
@@ -38,7 +35,6 @@ export default {
 
          console.log(this.cnt);
       },
-
 
       /* ---Используем их через mapActions--- */
       // increase() {
