@@ -23,21 +23,8 @@ const store = {
         orderIsDone: state => state.orderStatus === 2,
     },
     mutations: {
-        // decrease(state) {
-        //     if (state.cnt > 1) {
-        //         state.cnt--;
-        //     }
-        // },
-        // increase(state) {
-        //     state.cnt++;
-        // },
         setCnt(state, val) {
-
             state.cnt = { value: Math.max(1, val) };
-
-            // state.cnt = Math.max(1, val > 1 ? val : state.cnt + val)
-            // ? Math.max(1, val)
-            // : Math.max(1, state.cnt + val);
         },
         setOrderStatus(state, status) {
             state.orderStatus = status;
@@ -55,11 +42,9 @@ const store = {
         increase(store) {
             console.log(store);
             store.commit('setCnt', store.state.cnt.value + 1);
-            // store.commit('setCnt', 1);
         },
         decrease(store) {
             store.commit('setCnt', store.getters.cnt - 1);
-            // store.commit('setCnt', -1);
         },
         setInput(store, val) {
             store.commit('setCnt', val);
