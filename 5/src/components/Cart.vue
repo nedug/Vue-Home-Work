@@ -14,14 +14,15 @@
 		computed: {
 			...mapGetters(['cnt', 'total']),
 			some(){
-				return this.total / 120;
+				return Math.floor(this.total / 120);
 			}
 		}
 	}
 
+
+
 	/*
 		mapGetters(['cnt', 'total'])
-
 		{
 			cnt(){
 				return this.$store.getters.cnt;
@@ -30,7 +31,6 @@
 				return this.$store.getters.total;
 			}
 		}
-
 	*/	
 
 </script>

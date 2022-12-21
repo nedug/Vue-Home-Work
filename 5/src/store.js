@@ -53,6 +53,7 @@ const store = {
 
 export default createStore(store);
 
+
 /*
 	class VuexParody{
 		state = {}
