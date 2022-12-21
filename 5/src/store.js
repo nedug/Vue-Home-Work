@@ -18,9 +18,9 @@ const store = {
         price: state => state.price,
         cnt: state => state.cnt.value,
         total: state => state.price * state.cnt.value,
-        orderIsNothing: state => state.orderStatus == 0, // wtf my english
-        orderIsPending: state => state.orderStatus == 1,
-        orderIsDone: state => state.orderStatus == 2,
+        orderIsNothing: state => state.orderStatus === 0, // wtf my english
+        orderIsPending: state => state.orderStatus === 1,
+        orderIsDone: state => state.orderStatus === 2,
     },
     mutations: {
         // decrease(state) {
