@@ -38,6 +38,9 @@ export default {
 
          console.log(this.cnt);
       },
+
+
+/* ---Используем их через mapActions--- */
       // increase() {
       //    this.$store.dispatch('increase');
       // },
