@@ -19,8 +19,8 @@
                <td>{{ item.cnt }}</td>
                <td>
                   <div>
-                     <button class="btn btn-warning" @click="decrease">-</button>
-                     <button class="btn btn-success" @click="increase">+</button>
+                     <button class="btn btn-warning" @click="decrease(item.id)">-</button>
+                     <button class="btn btn-success" @click="increase(item.id)">+</button>
                   </div>
                </td>
                <td>
@@ -60,7 +60,7 @@ export default {
       },
    },
    methods: {
-      ...mapActions('cart', ['add', 'remove']),
+      ...mapActions('cart', ['add', 'remove', 'increase', 'decrease']),
    },
 };
 </script>
