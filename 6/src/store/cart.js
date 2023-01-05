@@ -5,6 +5,7 @@ export default {
     },
     getters: {
         inCart: state => id => state.items.some(item => item.id === id),
+        cart: state => state.items,
         length: state => state.items.length,
         // total: (state, getter, rootState, rootGetters) rootGetters
         total: (state, getter, rootState, rootGetters) =>
