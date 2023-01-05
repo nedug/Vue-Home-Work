@@ -8,11 +8,21 @@
          <div v-else>{{ items }}</div>
 
          <table class="table table-bordered">
+            <tr>
+               <th>Title</th>
+               <th>Price</th>
+               <th>Count</th>
+            </tr>
             <tr v-for="item in items">
-               <!--               <td>{{ item.id }}</td>-->
                <td>{{ title(item.id) }}</td>
                <td>{{ price(item.id) }}</td>
                <td>{{ item.cnt }}</td>
+               <td>
+                  <div>
+                     <button class="btn btn-warning" @click="decrease">-</button>
+                     <button class="btn btn-success" @click="increase">+</button>
+                  </div>
+               </td>
                <td>
                   <div>
                      <button @click="remove(item.id)" type="button" class="btn btn-danger">Remove</button>
@@ -54,3 +64,9 @@ export default {
    },
 };
 </script>
+<style>
+td, th {
+   text-align: center;
+   padding: 5px;
+}
+</style>
