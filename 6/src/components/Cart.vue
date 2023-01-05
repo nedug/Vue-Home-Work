@@ -1,12 +1,10 @@
 <template>
    <div>
       <h1>Cart</h1>
-      
+
       <div>
          <div v-if="!items.length">Корзина пуста...</div>
-
 <!--         <div>{{ items }}</div>-->
-
          <table v-else class="table table-bordered">
             <tr>
                <th>Title</th>
@@ -48,7 +46,6 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
    computed: {
       ...mapGetters('products', ['product']),
-      // ...mapGetters('cart', ['inCart']),
       items() {
          return this.$store.getters['cart/cart'];
       },
