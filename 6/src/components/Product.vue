@@ -1,17 +1,15 @@
 <template>
-	<div>
-		<h1>Title</h1>
-		Back to products
-		<hr>
-		<div class="alert alert-success">
-			price
-			{{ $route.params.id }}
-		</div>
-	</div>
+   <div>
+      <h1>Title</h1>
+      Back to products
+      <hr>
+      <div class="alert alert-success">
+         price
+         {{ $route.params.id }}
+      </div>
+   </div>
 </template>
 
 <script>
-	export default {
-		
-	}
+export default {};
 </script>
