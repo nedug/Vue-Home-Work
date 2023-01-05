@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h1>Products</h1>
+     <div>{{cart}}</div>
 		<div class="row">
 			<div class="col col-sm-4 mb-3 mt-3" v-for="pr in productList" :key="pr.id">
 				<div class="card">
@@ -28,7 +29,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
 	computed: {
 		...mapGetters('products', { productList: 'all' }),
-		...mapGetters('cart', [ 'inCart' ])
+		...mapGetters('cart', [ 'inCart', 'cart' ])
 	},
 	methods: {
 		...mapActions('cart', [ 'add', 'remove' ])

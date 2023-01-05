@@ -26,8 +26,11 @@ export default {
     actions: {
         add({ commit, getters }, id) {
             if (!getters.inCart(id)) {
-                commit('add', id);
+                setTimeout(() => {
+                    commit('add', id);
+                }, 1000);
             }
+
         },
         remove({ commit, getters }, id) {
             if (getters.inCart(id)) {
