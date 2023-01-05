@@ -9,7 +9,7 @@ export default {
         length: state => state.items.length,
         // total: (state, getter, rootState, rootGetters) rootGetters
         total: (state, getter, rootState, rootGetters) =>
-            state.items.reduce((sum, it) => sum + rootGetters['products/product'](it.id).price, 0)
+            state.items.reduce((sum, it) => sum + rootGetters['products/product'](it.id).price, 0),
     },
     mutations: {
         add(state, id) {
@@ -19,11 +19,8 @@ export default {
             state.items = state.items.filter(item => item.id !== id);
         },
         setCnt(state, payload) {
-            // console.log(payload);
-            // console.log(val);
-            // state.cnt = { value: Math.max(1, val) };
-            // console.log(state.items.map(it => it.id === payload.id ? {...it, cnt: it.cnt + payload.val} : it));
-            state.items = state.items.map(it => it.id === payload.id ? {...it, cnt: it.cnt + payload.val} : it)
+            state.items = state.items.map(it => it.id === payload.id
+                ? { ...it, cnt: Math.max(1, it.cnt + payload.val) } : it);
         },
     },
     actions: {
@@ -37,14 +34,10 @@ export default {
                 commit('remove', id);
             }
         },
-
         increase({ commit, getters, state }, id) {
-            // commit('setCnt', state.items.find(item => item.id === id).cnt + 1);
             commit('setCnt', { id, val: 1 });
         },
-
         decrease({ commit, getters, state }, id) {
-            // commit('setCnt', state.items.find(item => item.id === id).cnt + 1);
             commit('setCnt', { id, val: -1 });
         },
     },
