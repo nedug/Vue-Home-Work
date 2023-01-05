@@ -14,9 +14,13 @@
                <td>{{ price(item.id) }}</td>
                <td>{{ item.cnt }}</td>
                <td>
-                  <div><button @click="remove(item.id)" type="button" class="btn btn-danger">Remove</button></div>
+                  <div>
+                     <button @click="remove(item.id)" type="button" class="btn btn-danger">Remove</button>
+                  </div>
                </td>
-               <td><router-link :to="{ name: 'product', params: { id: item.id } }">Read more</router-link></td>
+               <td>
+                  <router-link :to="{ name: 'product', params: { id: item.id } }">Read more</router-link>
+               </td>
             </tr>
          </table>
       </div>
