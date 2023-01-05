@@ -9,8 +9,10 @@
                <div class="col col-sm-3">
                   <div class="alert alert-default">
                      <div>
-                        In Cart: {{ $store.getters['cart/length'] }}.
-                        Total price: 0$
+                        In Cart: {{ $store.getters['cart/length'] }}
+                     </div>
+                     <div>
+                        Total price: {{ $store.getters['cart/total'] }}$
                      </div>
                   </div>
                </div>
