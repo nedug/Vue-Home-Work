@@ -1,13 +1,13 @@
 <template>
    <div>
       <h1>Cart</h1>
-      <hr>
+      
       <div>
          <div v-if="!items.length">Корзина пуста...</div>
 
-         <div v-else>{{ items }}</div>
+<!--         <div>{{ items }}</div>-->
 
-         <table class="table table-bordered">
+         <table v-else class="table table-bordered">
             <tr>
                <th>Title</th>
                <th>Price</th>
@@ -65,7 +65,7 @@ export default {
 };
 </script>
 <style>
-td, th {
+td, th, tr {
    text-align: center;
    padding: 5px;
 }
