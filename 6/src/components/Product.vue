@@ -4,6 +4,13 @@
       <h1>{{ title }}</h1>
       <hr>
       <div class="alert alert-success">price: {{ price }}$</div>
+
+      <button v-if="inCart(id)" @click="remove(id)" type="button" class="btn btn-danger">
+         Remove
+      </button>
+      <button v-else @click="add(id)" type="button" class="btn btn-success">
+         Add to cart
+      </button>
    </div>
 </template>
 
@@ -14,7 +21,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
    computed: {
       ...mapGetters('products', ['product']),
-      // ...mapGetters('cart', ['inCart']),
+      ...mapGetters('cart', ['inCart']),
       id() {
          return Number(this.$route.params.id);
       },
@@ -26,7 +33,7 @@ export default {
       },
    },
    methods: {
-      // ...mapActions('cart', ['add', 'remove']),
+      ...mapActions('cart', ['add', 'remove']),
    },
    beforeMount() {
       if (!this.product(this.id)) {

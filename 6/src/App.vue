@@ -8,7 +8,10 @@
                </div>
                <div class="col col-sm-3">
                   <div class="alert alert-default">
-                     <div>In Cart: {{ $store.getters['cart/length'] }}</div>
+                     <div>
+                        In Cart: {{ $store.getters['cart/length'] }}.
+                        Total price: 0$
+                     </div>
                   </div>
                </div>
             </div>
