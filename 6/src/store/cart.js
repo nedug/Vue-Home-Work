@@ -6,10 +6,10 @@ export default {
     getters: {
         inCart: state => id => state.items.some(item => item.id === id),
         cart: state => state.items,
-        length: state => state.items.length,
+        length: state => state.items.reduce((sum, it) => sum + it.cnt, 0),
         // total: (state, getter, rootState, rootGetters) rootGetters
         total: (state, getter, rootState, rootGetters) =>
-            state.items.reduce((sum, it) => sum + rootGetters['products/product'](it.id).price, 0),
+            state.items.reduce((sum, it) => sum + rootGetters['products/product'](it.id).price * it.cnt, 0),
     },
     mutations: {
         add(state, id) {
