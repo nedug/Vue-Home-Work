@@ -28,7 +28,7 @@ export default {
             if (!getters.inCart(id)) {
                 setTimeout(() => {
                     commit('add', id);
-                }, 1000);
+                }, 500);
             }
 
         },
