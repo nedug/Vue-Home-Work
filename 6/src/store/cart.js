@@ -7,6 +7,8 @@ export default {
         inCart: state => id => state.items.some(item => item.id === id),
         length: state => state.items.length,
         // total: (state, getter, rootState, rootGetters) rootGetters
+        total: (state, getter, rootState, rootGetters) =>
+            state.items.reduce((sum, it) => sum + rootGetters['products/product'](it.id).price, 0)
     },
     mutations: {
         add(state, id) {
