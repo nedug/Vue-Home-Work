@@ -25,7 +25,9 @@
                <button class="btn btn-warning me-1" @click="setCnt({ id: pr.id, cnt: pr.cnt - 1 })">-1</button>
                <button class="btn btn-success" @click="setCnt({ id: pr.id, cnt: pr.cnt + 1 })">+1</button>
             </td>
-            <td> <button @click="remove(pr.id)" type="button" class="btn btn-danger">x</button></td>
+            <td>
+               <button @click="remove(pr.id)" type="button" class="btn btn-danger">x</button>
+            </td>
             <td>
                <router-link :to="{ name: 'product', params: { id: pr.id } }">Read more</router-link>
             </td>
@@ -46,7 +48,7 @@ export default {
       ...mapGetters('cart', { products: 'itemsDetailed', length: 'length' }),
    },
    methods: {
-      ...mapActions('cart', ['setCnt', 'remove',]),
+      ...mapActions('cart', ['setCnt', 'remove']),
    },
 };
 </script>
