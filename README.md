@@ -1,8 +1,8 @@
-# Clone of bank app
+# Online Shop
 
 ***
 
-Development Bank app with CRUD operations:
+Development Online Shop app with CRUD operations:
 * application Login
 * application Logout
 * adding request
@@ -18,10 +18,7 @@ Development Bank app with CRUD operations:
 Technologies and libraries in development:
 - Vue 3
 - Vuex
-- vee-validate + yup
-- Axios
 - vue-router
-- Firebase
 ```
 
 ***
