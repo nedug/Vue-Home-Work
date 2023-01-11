@@ -36,7 +36,7 @@
       </table>
       <hr>
       <div v-if="length">
-         <router-link :to="{ name: 'checkout' }" @click="clean" class="btn btn-success">Checkout</router-link>
+         <router-link :to="{ name: 'checkout' }" @click="inOrder" class="btn btn-success">Checkout</router-link>
          <button @click="clean" type="button" class="btn btn-danger">Clean Cart</button>
       </div>
    </div>
@@ -51,7 +51,7 @@ export default {
       ...mapGetters('cart', { products: 'itemsDetailed', length: 'length' }),
    },
    methods: {
-      ...mapActions('cart', ['setCnt', 'remove', 'clean']),
+      ...mapActions('cart', ['setCnt', 'remove', 'clean', 'inOrder']),
    },
 };
 </script>
