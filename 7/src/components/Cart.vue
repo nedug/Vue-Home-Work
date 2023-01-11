@@ -35,7 +35,10 @@
          </tbody>
       </table>
       <hr>
-      <router-link v-if="length" :to="{ name: 'checkout' }" class="btn btn-success">Checkout</router-link>
+      <div v-if="length">
+         <router-link :to="{ name: 'checkout' }" class="btn btn-success">Checkout</router-link>
+         <button @click="remove(pr.id)" type="button" class="btn btn-danger">Clean Cart</button>
+      </div>
    </div>
 </template>
 
