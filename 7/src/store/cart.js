@@ -4,6 +4,7 @@ export default {
     namespaced: true,
     state: {
         items: [],
+        inProcess: [],
         token: null,
     },
     getters: {
@@ -35,6 +36,12 @@ export default {
             let item = state.items.find(item => item.id == id);
             item.cnt = cnt;
         },
+        processIn(state, id) {
+            state.inProcess.push({ id });
+        },
+        processOut(state, id) {
+            state.inProcess = state.inProcess.filter(item => item.id !== id);
+        },
     },
     actions: {
         async load({ commit }) {
@@ -49,6 +56,7 @@ export default {
             commit('load', { cart, token });
         },
         async add({ commit, getters, state }, id) {
+            commit('processIn', id);
             if (!getters.inCart(id)) {
                 let response = await fetch(`${BASEURL}add.php?token=${state.token}&id=${id}`);
                 let res = await response.json();
@@ -56,6 +64,7 @@ export default {
                 if (res) {
                     commit('add', id);
                 }
+                commit('processOut', id);
             }
         },
         async remove({ commit, getters, state }, id) {
