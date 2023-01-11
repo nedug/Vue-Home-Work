@@ -2,7 +2,7 @@
 
 ***
 
-Development Online Shop app with CRUD operations:
+Development simple Online Shop app with CRUD operations:
 * application Login
 * application Logout
 * adding request
