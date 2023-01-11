@@ -69,7 +69,7 @@ export default {
             }
         },
         async clean({ commit, getters, state }) {
-            if (getters.length()) {
+            if (getters.length) {
                 let response = await fetch(`${BASEURL}clean.php?token=${state.token}`);
                 let res = await response.json();
 
@@ -78,11 +78,17 @@ export default {
                 }
             }
         },
-        setCnt({ commit, getters }, { id, cnt }) {
+        async setCnt({ commit, getters, state }, { id, cnt }) {
             if (getters.inCart(id)) {
-                let item = getters.itemsDetailed.find(item => item.id == id);
-                let validCnt = Math.min(Math.max(cnt, 1), item.rest);
-                commit('setCnt', { id, cnt: validCnt });
+
+                let response = await fetch(`${BASEURL}change.php?token=${state.token}&id=${id}&cnt=${cnt}`);
+                let res = await response.json();
+
+                if (res) {
+                    let item = getters.itemsDetailed.find(item => item.id == id);
+                    let validCnt = Math.min(Math.max(cnt, 1), item.rest);
+                    commit('setCnt', { id, cnt: validCnt });
+                }
             }
         },
     },
