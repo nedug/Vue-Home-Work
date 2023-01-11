@@ -51,14 +51,6 @@
       'leave-active-class': 'animate__animated animate__slideOutUp',
     }">
       <template v-slot:title>Are you ready to order?</template>
-      <!--      <table class="table table-bordered">-->
-      <!--         <tbody>-->
-      <!--         <tr v-for="(field, i) in info" :key="i">-->
-      <!--            <td>{{ field.label }}</td>-->
-      <!--            <td>{{ field.value }}</td>-->
-      <!--         </tr>-->
-      <!--         </tbody>-->
-      <!--      </table>-->
    </custom-modal>
 </template>
 
