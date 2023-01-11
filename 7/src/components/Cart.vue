@@ -51,7 +51,7 @@ export default {
       ...mapGetters('cart', { products: 'itemsDetailed', length: 'length' }),
    },
    methods: {
-      ...mapActions('cart', ['setCnt', 'remove']),
+      ...mapActions('cart', ['setCnt', 'remove', 'clean']),
    },
 };
 </script>

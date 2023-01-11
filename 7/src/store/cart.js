@@ -28,6 +28,9 @@ export default {
         remove(state, id) {
             state.items = state.items.filter(item => item.id != id);
         },
+        clean(state) {
+            state.items = [];
+        },
         setCnt(state, { id, cnt }) {
             let item = state.items.find(item => item.id == id);
             item.cnt = cnt;
@@ -65,13 +68,13 @@ export default {
                 }
             }
         },
-        async clean({ commit, getters, state }, id) {
-            if (getters.inCart(id)) {
-                let response = await fetch(`${BASEURL}remove.php?token=${state.token}&id=${id}`);
+        async clean({ commit, getters, state }) {
+            if (getters.length()) {
+                let response = await fetch(`${BASEURL}clean.php?token=${state.token}`);
                 let res = await response.json();
 
                 if (res) {
-                    commit('remove', id);
+                    commit('clean');
                 }
             }
         },
