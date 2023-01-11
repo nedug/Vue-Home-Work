@@ -36,7 +36,7 @@
       </table>
       <hr>
       <div v-if="length">
-         <router-link :to="{ name: 'checkout' }" class="btn btn-success">Checkout</router-link>
+         <router-link :to="{ name: 'checkout' }" @click="clean" class="btn btn-success">Checkout</router-link>
          <button @click="clean" type="button" class="btn btn-danger">Clean Cart</button>
       </div>
    </div>
