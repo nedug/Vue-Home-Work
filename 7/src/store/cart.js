@@ -17,6 +17,7 @@ export default {
         },
         length: state => state.items.length,
         total: (state, getters) => getters.itemsDetailed.reduce((t, i) => t + i.price * i.cnt, 0),
+        disable: state => id => state.inProcess.find(item => item.id === id),
     },
     mutations: {
         load(state, { cart, token }) {
@@ -68,6 +69,7 @@ export default {
             }
         },
         async remove({ commit, getters, state }, id) {
+            commit('processIn', id);
             if (getters.inCart(id)) {
                 let response = await fetch(`${BASEURL}remove.php?token=${state.token}&id=${id}`);
                 let res = await response.json();
@@ -75,6 +77,7 @@ export default {
                 if (res) {
                     commit('remove', id);
                 }
+                commit('processOut', id);
             }
         },
         async clean({ commit, getters, state }) {

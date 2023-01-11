@@ -7,10 +7,12 @@
          price: {{ product.price }}$
       </div>
 
-      <button v-if="inCart(id)" @click="remove(id)" type="button" class="btn btn-danger">
+      <button v-if="inCart(id)" @click="remove(id)" type="button" class="btn btn-danger"
+              :disabled="disable(id)">
          Remove
       </button>
-      <button v-else @click="add(id)" type="button" class="btn btn-success">
+      <button v-else @click="add(id)" type="button" class="btn btn-success"
+              :disabled="disable(id)">
          Add to cart
       </button>
    </div>
@@ -28,7 +30,7 @@ export default {
    },
    computed: {
       ...mapGetters('products', { productById: 'one' }),
-      ...mapGetters('cart', ['inCart']),
+      ...mapGetters('cart', ['inCart', 'disable']),
       id() {
          return parseInt(this.$route.params.id);
       },

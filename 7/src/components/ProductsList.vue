@@ -9,10 +9,12 @@
 						<div>{{ pr.price }}$</div>
 						<router-link :to="{ name: 'product', params: { id: pr.id } }">Read more</router-link>
 						<hr>
-						<button v-if="inCart(pr.id)" @click="remove(pr.id)" type="button" class="btn btn-danger">
+						<button v-if="inCart(pr.id)" @click="remove(pr.id)" type="button" class="btn btn-danger"
+                    :disabled="disable(pr.id)">
 							Remove
 						</button>
-						<button v-else @click="add(pr.id)" type="button" class="btn btn-success">
+						<button v-else @click="add(pr.id)" type="button" class="btn btn-success"
+                    :disabled="disable(pr.id)">
 							Add to cart
 						</button>
 					</div>
@@ -28,7 +30,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
 	computed: {
 		...mapGetters('products', { productList: 'all' }),
-		...mapGetters('cart', [ 'inCart' ])
+		...mapGetters('cart', [ 'inCart', 'disable'])
 	},
 	methods: {
 		...mapActions('cart', [ 'add', 'remove' ])
