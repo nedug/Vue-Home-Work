@@ -4,6 +4,7 @@ export default {
     namespaced: true,
     state: {
         items: [],
+        order: [],
         inProcess: [],
         token: null,
     },
@@ -16,6 +17,8 @@ export default {
             });
         },
         length: state => state.items.length,
+        lengthOrder: state => state.order.length,
+        order: state => state.order,
         total: (state, getters) => getters.itemsDetailed.reduce((t, i) => t + i.price * i.cnt, 0),
         disable: state => id => state.inProcess.find(item => item.id === id),
     },
@@ -42,6 +45,12 @@ export default {
         },
         processOut(state, id) {
             state.inProcess = state.inProcess.filter(item => item.id !== id);
+        },
+        inOrder(state, order) {
+
+            console.log('dfdf');
+
+            state.order = order;
         },
     },
     actions: {
@@ -102,6 +111,10 @@ export default {
                     commit('setCnt', { id, cnt: validCnt });
                 }
             }
+        },
+        inOrder({ commit, getters, state, dispatch }) {
+            commit('inOrder', getters.itemsDetailed);
+            dispatch('clean');
         },
     },
 };
