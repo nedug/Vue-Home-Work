@@ -6,7 +6,7 @@
 				<div class="card">
 					<div class="card-body">
 						<h3>{{ pr.title }}</h3>
-						<div>{{ pr.price }}</div>
+						<div>{{ pr.price }}$</div>
 						<router-link :to="{ name: 'product', params: { id: pr.id } }">Read more</router-link>
 						<hr>
 						<button v-if="inCart(pr.id)" @click="remove(pr.id)" type="button" class="btn btn-danger">

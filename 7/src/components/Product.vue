@@ -4,7 +4,7 @@
 		Back to products
 		<hr>
 		<div class="alert alert-success">
-			{{ product.price }}
+			{{ product.price }}$
 		</div>
 	</div>
 	<app-e-404 v-else />

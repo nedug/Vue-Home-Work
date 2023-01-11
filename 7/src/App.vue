@@ -4,12 +4,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col col-sm-9">
-						<h1>Site</h1>
+						<h1>Online Shop</h1>
 					</div>
 					<div class="col col-sm-3">
 						<div class="alert alert-default">
 							<div>In Cart: {{ $store.getters['cart/length'] }}</div>
-							<div>Total: {{ $store.getters['cart/total'] }}</div>
+							<div>Total: {{ $store.getters['cart/total'] }}$</div>
 						</div>
 					</div>
 				</div>
