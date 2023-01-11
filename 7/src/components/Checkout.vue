@@ -2,7 +2,6 @@
    <div>
       <h1>Your order now</h1>
       <hr>
-
       <div v-if="!length">This will be your last order...</div>
       <table v-else class="table table-bordered table-hover">
          <thead>
