@@ -2,7 +2,7 @@
    <div>
       <h1>Cart</h1>
       <hr>
-      <div v-if="!length">Корзина пуста...</div>
+      <div v-if="!length">Cart is empty...</div>
       <table v-else class="table table-bordered table-hover">
          <thead>
          <tr>
@@ -37,7 +37,7 @@
       <hr>
       <div v-if="length">
          <router-link :to="{ name: 'checkout' }" class="btn btn-success">Checkout</router-link>
-         <button @click="remove(pr.id)" type="button" class="btn btn-danger">Clean Cart</button>
+         <button @click="clean" type="button" class="btn btn-danger">Clean Cart</button>
       </div>
    </div>
 </template>
