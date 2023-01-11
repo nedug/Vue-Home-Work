@@ -18,7 +18,7 @@ Development simple Online Shop app with CRUD operations:
 Technologies and libraries in development:
 - Vue 3
 - Vuex
-- vue-router
+- Vue-router
 ```
 
 ***
