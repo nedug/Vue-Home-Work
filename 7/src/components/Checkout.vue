@@ -3,7 +3,7 @@
 		<h1>Your order now</h1>
 		<hr>
 
-     <div v-if="!length">This will be your first order...</div>
+     <div v-if="!length">This will be your last order...</div>
      <table v-else class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -31,7 +31,7 @@ import { mapGetters } from 'vuex';
 
 export default {
    computed: {
-      ...mapGetters('cart', { products: 'itemsDetailed', length: 'lengthOrder', order: 'order' }),
+      ...mapGetters('cart', { length: 'lengthOrder', order: 'order' }),
    },
 };
 </script>

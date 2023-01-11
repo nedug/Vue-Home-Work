@@ -47,9 +47,6 @@ export default {
             state.inProcess = state.inProcess.filter(item => item.id !== id);
         },
         inOrder(state, order) {
-
-            console.log('dfdf');
-
             state.order = order;
         },
     },
